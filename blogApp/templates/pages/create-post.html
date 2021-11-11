@@ -1,0 +1,20 @@
+{% extends 'sections/base.html' %}
+{% block content %}
+{% load static %}
+
+<h1>New post</h1>
+{% for message in messages%}
+        <p id="messages" class="text-white text-center">{{message}}</p>
+    {% endfor %}
+<form action="" method="POST" enctype='multipart/form-data'>
+    {%csrf_token%}
+    <!-- {{form }} -->
+    {% for field in form%}
+        <div class="form-group"> <label for=""> {{field.label}} </label> {{field}}
+        </div>
+    {% endfor %}
+    <input type="submit" name="submit" value="create post" class="btn btn-sm btn-info ">
+    <a class="btn btn-sm btn-info" href="/">Cancel</a>
+
+</form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'sections/base.html' %}
+{% block content %}
+{% load static %}
+ 
+<h1 class=" px-4 py-2 text-left max-width:50px ">My Posts - {{post_no}}</h1>
+{% if post_no > 0 %}
+{% for post in my_posts%}
+<div class="row rounded text-white px-4 py-2 border border-info" style="margin:15px 0;">
+    <div class="col-sm-3 col-md-4 col-lg-4"><img src="{% static post.post_image %}" alt=""></div>
+    <div class="col-sm-6 col-md-6 col-lg-6">{{post.description}}</div>
+    <div class="col-sm-3 col-md-2 col-lg-2">
+        <p><a href="{% url 'update-post' post.id%}" class="btn btn-sm btn-info"><i class="bi bi-arrow-repeat"></i> Update  </a> </p>
+        <p><a href="{% url 'delete-post' post.id%}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i> Delete </a></p>
+        <p><i class="bi bi-eye"></i> {{post.views_no}} - <i class="bi bi-chat-left-text"></i> {{post.comments_no}} </p>
+        <p ><a href="{% url 'details' post.id%}" style="color:dodgerblue">Read more...</a></p>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+    <p class="text-white">you haven't created any posts yet. please go ahead and create One <span><small><a href="{% url 'new-post'%}" class="btn btn-sm btn-info"><i class="bi bi-plus"></i> Add new post </a> </small></span></p>
+{%endif%}
+{% endblock %}

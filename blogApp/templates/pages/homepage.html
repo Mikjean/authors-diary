@@ -1,0 +1,42 @@
+{% extends 'sections/base.html' %}
+{% block content %}
+{% load static %}
+
+
+
+<div class="cotainer md-20">
+    <div class="container">
+        <div class="text-center">
+          <h1 class="bg-red px-4 py-2 text-left max-width:50px ">{{post_no}} posts 
+            {% if request.user.is_authenticated %}
+            <span><small><a href="{% url 'new-post'%}" class="btn btn-sm btn-info"><i class="bi bi-plus"></i> Add new post </a> </small></span>
+            <span><small><a href="{% url 'user-dashboard' %}" class="btn btn-sm btn-info"><i class="bi bi-view-list"></i> MyPosts </a> 
+            {% endif %}</small></h1>
+        </div>
+        <div class="container">
+          <div class="card-columns">
+            {% for post in posts %}
+
+            <div class="card comment1">
+              <a href="{% url 'details' post.id %}">
+              <img class="card-img-top" src="{% static post.post_image %}" alt="Card image cap">
+              
+              <div class="card-body text-white">
+                <h5 class="card-title text-capitalize">{{post.heading}}</h5>
+                <p class="card-text text-truncate "  style="max-width: 250;">
+                  {{post.description}}
+                </p>
+                <p><i class="bi bi-calendar"></i>  {{post.created_at|timesince }}</p>
+                <p class="card-text text-center"><span class="text-muted"><i class="bi bi-eye"></i>{{post.views}} <i class="bi bi-chat-left-text"></i>{{post.comments}}  
+                   <i class="bi bi-pen"></i>{{post.author}} </span></p>
+            </div>
+              </a>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}

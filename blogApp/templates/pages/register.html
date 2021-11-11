@@ -1,0 +1,26 @@
+{% extends 'sections/base.html' %}
+{% block content %}
+<div class="col-lg-5 col-md-5 col-sm-4 offset-md-4 offset-sm-1 col-12 col-mt-4 text-white" style="margin: 10;">
+    <form id="algin-form " method="POST" action=" " >
+        <h3 class="text-white text-center">Register</h3>
+        {% csrf_token%}
+
+        {% for field in form%}
+
+        <div class="form-group"> <label for=""> {{field.label}} </label> {{field}}
+        </div>
+
+
+        {% endfor %}
+
+        <div class="form-group">
+            <p class="text-secondary">already have an account?<a href="{% url 'login' %}" class="alert-link"> Sign in
+                    here.</a> </p>
+        </div>
+        <!-- <div class="form-inline"> <input type="checkbox" name="check" id="checkbx" class="mr-1"> <label for="subscribe">Subscribe me to the newlettter</label> </div> -->
+        <div class="form-group text-right"> <input type="submit" id="post" class="btn" value="Register"> </div>
+
+    </form>
+</div>
+
+{% endblock %}

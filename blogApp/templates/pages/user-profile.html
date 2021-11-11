@@ -1,0 +1,11 @@
+{% extends 'sections/base.html' %}
+{% block content %}
+{% load static %}
+<div class="container text-white">
+    <h1 class="">{{auth_user}} | USER PROFILE </h1>
+    <img src="{% static auth_user.profile.image_profile %}" alt="user-profile" style="width: 150px;" />
+
+</div>
+
+
+{% endblock %}

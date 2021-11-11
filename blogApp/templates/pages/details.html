@@ -1,0 +1,39 @@
+{% extends 'sections/base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="container">
+
+    <!-- Portfolio Item Heading -->
+    
+  
+    <!-- Portfolio Item Row -->
+    <div class="row" style="margin-top: 20px;">
+  
+      <div class="col-md-8">
+        <img class="img-fluid" src="{% static post.post_image %}" alt="">
+      </div>
+      <div>
+        <p></p>
+      </div>
+  
+      <div class="col-md-4 text-white">
+        <h1 class="my-4">{{post.heading}} <small style="font-size: 16px;"><br> | <b>{{views_no}}</b> views . <b>{{comments_no}}</b> comments, -by: <i>{{post.author}}</i> </small>
+        
+        </h1>
+        <p>{{post.description}}</p>
+        <h3 class="my-3">Category <span class="test-small">{% for cat  in category%}
+                                          . {{cat}}
+                                        {% endfor%}</span></h3>
+        
+      </div>
+  
+    </div>
+</div>
+
+
+{% include  'sections/comments.html' %}
+
+
+{% endblock %}

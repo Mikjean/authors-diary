@@ -1,0 +1,12 @@
+{% extends 'sections/base.html' %}
+{% block content %}
+{% load static %}
+
+<h1 class="text-white">update post</h1>
+<form action="" method="POST" enctype='multipart/form-data'>
+    {%csrf_token%}
+    {{form }}
+    <input type="submit" name="submit" value="update post" >
+
+</form>
+{% endblock %}
